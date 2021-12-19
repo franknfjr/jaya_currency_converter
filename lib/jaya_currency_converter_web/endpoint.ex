@@ -10,10 +10,6 @@ defmodule JayaCurrencyConverterWeb.Endpoint do
     signing_salt: "YT3FwLLk"
   ]
 
-  socket "/socket", JayaCurrencyConverterWeb.UserSocket,
-    websocket: true,
-    longpoll: false
-
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest
@@ -32,7 +28,6 @@ defmodule JayaCurrencyConverterWeb.Endpoint do
   end
 
   plug Plug.RequestId
-  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
