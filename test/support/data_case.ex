@@ -14,6 +14,7 @@ defmodule JayaCurrencyConverter.DataCase do
   this option is not recommended for other databases.
   """
 
+  alias Ecto.Adapters.SQL.Sandbox
   use ExUnit.CaseTemplate
 
   using do
@@ -28,10 +29,10 @@ defmodule JayaCurrencyConverter.DataCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(JayaCurrencyConverter.Repo)
+    :ok = Sandbox.checkout(JayaCurrencyConverter.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(JayaCurrencyConverter.Repo, {:shared, self()})
+      Sandbox.mode(JayaCurrencyConverter.Repo, {:shared, self()})
     end
 
     :ok
