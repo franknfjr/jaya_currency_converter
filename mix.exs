@@ -5,7 +5,7 @@ defmodule JayaCurrencyConverter.MixProject do
     [
       app: :jaya_currency_converter,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.11.4",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
