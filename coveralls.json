@@ -1,0 +1,17 @@
+{
+    "skip_files":[
+       "lib/jaya_currency_converter_web.ex",
+       "lib/jaya_currency_converter/repo.ex",
+       "lib/jaya_currency_converter_web/controllers/home_controller.ex",
+       "lib/jaya_currency_converter_web/endpoint.ex",
+       "lib/jaya_currency_converter_web/gettext.ex",
+       "lib/jaya_currency_converter_web/router.ex",
+       "lib/jaya_currency_converter_web/views/error_helpers.ex",
+       "test/support/data_case.ex"
+    ],
+    "coverage_options":{
+       "treat_no_relevant_lines_as_covered":true,
+       "output_dir":"cover/",
+       "minimum_coverage":80
+    }
+ }

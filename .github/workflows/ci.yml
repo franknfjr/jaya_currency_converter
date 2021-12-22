@@ -1,0 +1,143 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+  
+jobs:
+  lint:
+   runs-on: ubuntu-latest
+   steps:
+    - uses: actions/checkout@v2
+    - uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
+      with:
+        otp-version: '23.0'
+        elixir-version: '1.11.0'
+
+    - uses: actions/cache@v2
+      env:
+        cache-name: cache-elixir-deps
+      with:
+        path: |
+          deps
+          _build
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: |
+                    ${{ runner.os }}-build-${{ env.cache-name }}-
+                    ${{ runner.os }}-build-
+                    ${{ runner.os }}-
+    - name: deps
+      run: mix deps.get
+    - name: LINT CODE
+      run: mix credo --strict
+
+  check_format:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
+      with:
+        otp-version: '23.0'
+        elixir-version: '1.11.0'
+
+    - uses: actions/cache@v2
+      env:
+        cache-name: cache-elixir-deps
+      with:
+        path: |
+          deps
+          _build
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: |
+                    ${{ runner.os }}-build-${{ env.cache-name }}-
+                    ${{ runner.os }}-build-
+                    ${{ runner.os }}-
+    - name: deps
+      run: mix deps.get
+    - name: Format
+      run: mix format --check-formatted
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
+      with:
+        otp-version: '23.0'
+        elixir-version: '1.11.0'
+
+    - uses: actions/cache@v2
+      env:
+        cache-name: cache-elixir-deps
+      with:
+        path: |
+          deps
+          _build
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: |
+                    ${{ runner.os }}-build-${{ env.cache-name }}-
+                    ${{ runner.os }}-build-
+                    ${{ runner.os }}-
+    - name: deps
+      run: mix deps.get
+    - name: Format
+      run: mix sobelow --config
+
+  test:
+    name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    runs-on: ubuntu-latest
+    env:
+      MIX_ENV: test
+    strategy:
+      matrix:
+        elixir: ['1.11']
+        otp: ['24']
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup elixir
+      uses: actions/setup-elixir@v1
+      with:
+        elixir-version: ${{ matrix.elixir }}
+        otp-version: ${{ matrix.otp }}
+        experimental-otp: true
+
+    - name: Get deps cache
+      uses: actions/cache@v2
+      with:
+        path: deps/
+        key: deps-${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
+
+    - name: Get build cache
+      uses: actions/cache@v2
+      with:
+        path: _build/test/
+        key: build-${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
+
+    - name: Install Dependencies
+      run: |
+        mix local.rebar --force
+        mix local.hex --force
+        mix deps.get
+        mix compile
+    - name: Run Tests
+      run: mix coveralls.github -v
+      env:
+        MIX_ENV: test
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    services:
+      pg:
+        image: postgres:12
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5

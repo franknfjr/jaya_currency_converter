@@ -9,8 +9,6 @@ defmodule JayaCurrencyConverter.Application do
     children = [
       # Start the Ecto repository
       JayaCurrencyConverter.Repo,
-      # Start the Telemetry supervisor
-      JayaCurrencyConverterWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: JayaCurrencyConverter.PubSub},
       # Start the Endpoint (http/https)

@@ -1,19 +1,15 @@
-# JayaCurrencyConverter
+<img src="https://github.com/franknfjr/jaya_currency_converter/blob/development/assets/jaya_currency_converter.png" width="200" alt="JayaCurrencyConverter">
 
-To start your Phoenix server:
+The currency converter application is an API REST, called Jaya Currency Converter, converts amounts from one currency to two others. You can choose to display four different currencies, BRL, USD, EUR or JPY, and enter a value in one currency to be converted into the other selected currencies.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+## Installation
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Documentation
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## Examples
 
-## Learn more
+### Copyright and License
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+Copyright (c) 2021, Frank Ferreira.
+
+JayaCurrencyConverter is [MIT licensed](./LICENSE.md).
