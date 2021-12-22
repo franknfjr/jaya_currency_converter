@@ -29,3 +29,6 @@ jaya_currency_converter-*.tar
 
 # Ignore .env
 .env
+
+# Ignore .tool-version
+.tool-versions
