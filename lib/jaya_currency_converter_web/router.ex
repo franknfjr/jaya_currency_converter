@@ -11,5 +11,9 @@ defmodule JayaCurrencyConverterWeb.Router do
 
   scope "/api", JayaCurrencyConverterWeb do
     pipe_through :api
+
+    resources "/users", UserController, only: [:index, :show, :create] do
+      resources "/transaction", TransactionController, only: [:index, :show, :create]
+    end
   end
 end
