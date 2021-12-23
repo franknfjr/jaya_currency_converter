@@ -29,7 +29,7 @@ defmodule JayaCurrencyConverter.ExchangeRatesClient do
         body = response.body
         msg = body["error"]["code"]
 
-        {:error,  msg}
+        {:error, msg}
 
       {:error, reason} ->
         {:error, reason}

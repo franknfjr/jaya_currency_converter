@@ -12,8 +12,8 @@ defmodule JayaCurrencyConverter.Exchange do
   def calculate_amount(currency_from, currency_to, amount) when amount > 0 do
     cf = fetch_rates_from_currency(currency_from)
     ct = fetch_rates_from_currency(currency_to)
-    
-    (amount / cf ) * ct
+
+    (amount / cf * ct)
     |> Float.floor(4)
   end
 
