@@ -24,6 +24,9 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# Configures the API_KEY from exchangeratesapi.io
+config :jaya_currency_converter, :exchange, acess_key: System.get_env("API_KEY") || "ramdom_key"
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
