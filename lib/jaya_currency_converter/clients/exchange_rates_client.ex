@@ -7,7 +7,7 @@ defmodule JayaCurrencyConverter.ExchangeRatesClient do
 
   @symbols "BRL,USD,EUR,JPY"
   @base "EUR"
-  @acess_key Application.get_env(:jaya_currency_converter, :exchange)[:acess_key]
+  @acess_key Application.compile_env!(:jaya_currency_converter, :exchange)[:acess_key]
 
   def get_all_rates(base \\ @base) do
     request =
