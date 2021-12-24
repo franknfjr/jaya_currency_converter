@@ -19,9 +19,11 @@ As moedas serão referidas com o [padrão internacional](https://pt.wikipedia.or
 
 ## Informacoes Tecnicas
 
-O projeto foi criado todo na linguagem [Elixir](https://elixir-lang.org/) utilizando o framwork [Phoenix](https://www.phoenixframework.org/).
+O projeto foi criado todo na linguagem [Elixir](https://elixir-lang.org/) na versão 1.11.4 utilizando o framwork [Phoenix](https://www.phoenixframework.org/) versão 1.5.13.
 
 Para fazer as taxas de conversão foi utilizado a API do  [Exchangeratesapi.io](https://exchangeratesapi.io/documentation/)
+
+Para a persistência dos dados foi utilizado o PostgreSQL.
 
 Outras bibliotecas que foram utilizadas:
 
@@ -71,9 +73,14 @@ Metodo | endpoint   | descrição | valores que podem ser passados para os param
 -------|--------- | ----------------------- | --------------
 GET | / | exibe o texto #JayaCurrencyConverter | 
 GET | /api/users | lita todos usuarios | 
+GET | /api/users/:id | lista um usuario específico | `id`
 POST | /api/users | esse endpoint cria um usuario | `name`
 GET | /api/users/:user_id/transactions | lista todas transações de um usuário | `user_id`
+GET | /api/users/:user_id/transactions/:id | lista uma transação específica de um usuário | `user_id`, `id`
 POST | /api/users/:user_id/transactions | cria uma transação | `user_id`, `amount`, `currency_from`, `currency_to`
+
+| ⚠️ | Todos os campos `id` seguem o format de [UUID](https://pt.wikipedia.org/wiki/Identificador_%C3%BAnico_universal) |
+| - | - |
 
 Agora execute o comando para iniciar a aplicação.
 ```bash
