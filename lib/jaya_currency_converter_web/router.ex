@@ -13,7 +13,7 @@ defmodule JayaCurrencyConverterWeb.Router do
     pipe_through :api
 
     resources "/users", UserController, only: [:index, :show, :create] do
-      resources "/transaction", TransactionController, only: [:index, :show, :create]
+      resources "/transactions", TransactionController, only: [:index, :show, :create]
     end
   end
 end
