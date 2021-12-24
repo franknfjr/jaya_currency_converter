@@ -1,4 +1,5 @@
 defmodule JayaCurrencyConverter.Exchanges.Transaction do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
 

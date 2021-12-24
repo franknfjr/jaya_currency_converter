@@ -1,11 +1,15 @@
 defmodule JayaCurrencyConverter.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/franknfjr/jaya_currency_converter"
+  @version "0.1.0"
+
   def project do
     [
       app: :jaya_currency_converter,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.11.4",
+      source_url: @source_url,
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -18,7 +22,40 @@ defmodule JayaCurrencyConverter.MixProject do
         "coveralls.post": :test,
         "coveralls.json": :test,
         "coveralls.html": :test
-      ]
+      ],
+      description: "Jaya Currency Converter is a converter exchange",
+      package: package(),
+      docs: docs(),
+      name: "Currency Converter"
+    ]
+  end
+
+  defp package do
+    [
+      licenses: ["MIT lincense"],
+      maintainers: [
+        "Frank Ferreira"
+      ],
+      files: ["docs", "lib", "mix.exs", "LICENSE.md", "CHANGELOG.md", "README.md"],
+      links: %{
+        "GitHub" => @source_url
+      }
+    ]
+  end
+
+  defp docs do
+    [
+      name: "Jaya",
+      main: "readme",
+      logo: "./assets/jaya_currency_converter.png",
+      output: "docs",
+      extras: [
+        "README.md",
+        "CHANGELOG.md",
+        "LICENSE.md"
+      ],
+      source_ref: "v#{@version}",
+      source_url: @source_url
     ]
   end
 
@@ -51,7 +88,8 @@ defmodule JayaCurrencyConverter.MixProject do
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: :test},
       {:sobelow, "~> 0.8", only: :dev},
-      {:tesla, "~> 1.3.0"}
+      {:tesla, "~> 1.3.0"},
+      {:ex_doc, "~> 0.24", only: :dev, runtime: false}
     ]
   end
 

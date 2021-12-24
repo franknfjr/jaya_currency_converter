@@ -1,4 +1,5 @@
 defmodule JayaCurrencyConverterWeb.UserView do
+  @moduledoc false
   use JayaCurrencyConverterWeb, :view
 
   alias JayaCurrencyConverterWeb.UserView

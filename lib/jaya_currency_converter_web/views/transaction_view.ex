@@ -1,4 +1,5 @@
 defmodule JayaCurrencyConverterWeb.TransactionView do
+  @moduledoc false
   use JayaCurrencyConverterWeb, :view
 
   alias JayaCurrencyConverterWeb.TransactionView

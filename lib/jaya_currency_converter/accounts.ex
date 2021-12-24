@@ -39,7 +39,7 @@ defmodule JayaCurrencyConverter.Accounts do
     User
     |> Repo.get_by(id: id)
     |> case do
-      nil -> {:error, "some error"}
+      nil -> {:error, "user is not found"}
       user -> {:ok, user}
     end
   end
