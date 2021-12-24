@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/franknfjr/jaya_currency_converter/actions/workflows/ci.yml/badge.svg)](https://github.com/franknfjr/jaya_currency_converter/actions?query=workflow%3ACI)
 [![CD](https://github.com/franknfjr/jaya_currency_converter/actions/workflows/cd.yml/badge.svg)](https://github.com/franknfjr/jaya_currency_converter/actions?query=workflow%3ACD)
-[![Coverage Status](https://coveralls.io/repos/github/franknfjr/jaya_currency_converter/badge.svg?branch=development)](https://coveralls.io/github/franknfjr/jaya_currency_converter)
+[![Coverage Status](https://coveralls.io/repos/github/franknfjr/jaya_currency_converter/badge.svg)](https://coveralls.io/github/franknfjr/jaya_currency_converter)
 [![hexdocs.pm](https://img.shields.io/badge/docs-latest-green.svg?style=rounded)](https://hexdocs.pm/jaya_currency_converter/0.1.0/readme.html)
 
 A aplicação conversor de moedas é uma API REST, chamada Jaya Currency Converter, com objetivo de converter valores de uma moeda de origem para uma moeda de destino.
