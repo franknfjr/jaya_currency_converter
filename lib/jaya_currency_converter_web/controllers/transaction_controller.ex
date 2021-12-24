@@ -4,18 +4,22 @@ defmodule JayaCurrencyConverterWeb.TransactionController do
   alias JayaCurrencyConverter.{Accounts, Exchange, Exchanges}
   alias JayaCurrencyConverter.Exchanges.Transaction
 
-  def index(conn, %{"user_id" => user_id}) do
-    user = Accounts.get_user!(user_id)
-    render(conn, "index.json", transactions: user)
-  end
+  action_fallback JayaCurrencyConverterWeb.FallbackController
 
   def index(conn, _params) do
     transactions = Exchanges.list_transactions()
     render(conn, "index.json", transactions: transactions)
   end
 
+  def index(conn, %{"user_id" => user_id}) do
+    user = Accounts.get_user!(user_id)
+    render(conn, "index.json", transactions: user)
+  end
+
   def create(conn, %{"transaction" => transaction_params, "user_id" => user_id}) do
-    rate = Exchange.fetch_rates_from_currency(transaction_params["currency_to"])
+    rate =
+      transaction_params["currency_to"]
+      |> Exchange.fetch_rates_from_currency()
 
     amount_to =
       Exchange.calculate_amount(
@@ -38,16 +42,6 @@ defmodule JayaCurrencyConverterWeb.TransactionController do
         Routes.user_transaction_path(conn, :show, user_id, transaction)
       )
       |> render("show.json", transaction: transaction)
-    else
-      {:error, _msg} ->
-        conn
-        |> put_status(:not_found)
-        |> json(%{error: "fom"})
-
-      {:error, changeset} ->
-        conn
-        |> put_status(:not_acceptable)
-        |> json(%{error: inspect(changeset.errors)})
     end
   end
 
