@@ -1,4 +1,5 @@
 defmodule JayaCurrencyConverterWeb.FallbackController do
+  @moduledoc false
   use JayaCurrencyConverterWeb, :controller
 
   def call(conn, {:error, %Ecto.Changeset{} = changeset}) do

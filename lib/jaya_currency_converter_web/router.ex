@@ -1,4 +1,5 @@
 defmodule JayaCurrencyConverterWeb.Router do
+  @moduledoc false
   use JayaCurrencyConverterWeb, :router
 
   pipeline :api do

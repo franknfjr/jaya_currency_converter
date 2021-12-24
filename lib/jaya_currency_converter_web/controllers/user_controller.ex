@@ -1,4 +1,5 @@
 defmodule JayaCurrencyConverterWeb.UserController do
+  @moduledoc false
   use JayaCurrencyConverterWeb, :controller
 
   alias JayaCurrencyConverter.Accounts

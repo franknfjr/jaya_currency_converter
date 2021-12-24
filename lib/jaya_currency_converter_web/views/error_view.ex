@@ -1,4 +1,5 @@
 defmodule JayaCurrencyConverterWeb.ErrorView do
+  @moduledoc false
   use JayaCurrencyConverterWeb, :view
 
   # If you want to customize a particular status code
