@@ -122,7 +122,6 @@ jobs:
     - name: Run Tests
       run: mix coveralls.github -v
       env:
-        MIX_ENV: test
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     services:
