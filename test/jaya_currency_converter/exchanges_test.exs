@@ -1,9 +1,9 @@
 defmodule JayaCurrencyConverter.ExchangesTest do
   use JayaCurrencyConverter.DataCase
 
-  alias JayaCurrencyConverter.Exchanges
-  alias JayaCurrencyConverter.Accounts.User
   alias JayaCurrencyConverter.Accounts
+  alias JayaCurrencyConverter.Accounts.User
+  alias JayaCurrencyConverter.Exchanges
   alias JayaCurrencyConverter.Exchanges.Transaction
 
   describe "transactions" do
