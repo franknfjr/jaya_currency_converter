@@ -1,4 +1,4 @@
-defmodule JayaCurrencyConverter.ExchangeRatesClient do
+defmodule JayaCurrencyConverter.Clients.ExchangeRatesClient do
   @moduledoc """
   This is the ExchangeRatesClient module that makes the request for the Exchanges Rates API.
 
