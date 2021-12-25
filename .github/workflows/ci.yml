@@ -86,6 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MIX_ENV: test
+      API_KEY: ${{ secrets.API_KEY }}
     strategy:
       matrix:
         elixir: ['1.11']
