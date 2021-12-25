@@ -2,7 +2,8 @@ defmodule JayaCurrencyConverterWeb.TransactionController do
   @moduledoc false
   use JayaCurrencyConverterWeb, :controller
 
-  alias JayaCurrencyConverter.{Accounts, Exchange, Exchanges}
+  alias JayaCurrencyConverter.{Accounts, Exchanges}
+  alias JayaCurrencyConverter.Core.Exchange
   alias JayaCurrencyConverter.Exchanges.Transaction
 
   action_fallback JayaCurrencyConverterWeb.FallbackController

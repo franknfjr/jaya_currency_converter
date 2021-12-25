@@ -1,0 +1,3 @@
+defmodule JayaCurrencyConverterWeb.TransactionsTest do
+  use JayaCurrencyConverterWeb.ConnCase
+end

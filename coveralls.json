@@ -1,14 +1,14 @@
 {
     "skip_files":[
-       "test",
-       "lib/jaya_currency_converter_web",
-       "lib/jaya_currency_converter/repo.ex",
-       "lib/jaya_currency_converter/accounts/user.ex",
-       "lib/jaya_currency_converter/exchanges/transaction.ex"
+      "lib/jaya_currency_converter/application.ex",
+      "lib/jaya_currency_converter/release.ex",
+      "lib/jaya_currency_converter_web.ex",
+      "lib/jaya_currency_converter_web/views/error_helpers.ex",
+      "test/support/data_case.ex"
     ],
     "coverage_options":{
        "treat_no_relevant_lines_as_covered":true,
        "output_dir":"cover/",
-       "minimum_coverage":10
+       "minimum_coverage":40
     }
  }
